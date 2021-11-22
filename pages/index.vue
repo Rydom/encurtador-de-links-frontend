@@ -33,7 +33,10 @@
           <v-row>
             <v-col cols="6" sm="12" v-if="shortenedUrl && shortenedUrl != ''">
               <span
-                >Seu link: <a target="_blank">{{ shortenedUrl }}</a></span
+                >Seu link:
+                <a :href="shortenedUrl" target="_blank">{{
+                  shortenedUrl
+                }}</a></span
               >
               <v-icon dark right color="light-green darken-1" @click="copyUrl">
                 mdi-content-copy
@@ -86,7 +89,7 @@ export default Vue.extend({
     baseUrl() {},
   },
   async mounted() {
-    await this.getDetails()
+    await this.getDetails();
   },
   methods: {
     async generateLink() {
@@ -99,14 +102,12 @@ export default Vue.extend({
             const shortenedUrl = baseUrl + "/" + shortLink;
             this.shortenedUrl = shortenedUrl;
 
-            if (this.copyUrl()) {
-              const messageConfig = {
-                title: "Sucesso!",
-                text: "Seu link foi encurcutado com sucesso e já foi copiado para a àrea de transferência`",
-                timer: this.timer,
-              };
-              this.showSucessMessage(messageConfig);
-            }
+            const messageConfig = {
+              title: "Sucesso!",
+              text: "Seu link foi encurtado com sucesso.`",
+              timer: this.timer,
+            };
+            this.showSucessMessage(messageConfig);
           }
         })
         .catch((e) => {
