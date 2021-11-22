@@ -4,11 +4,11 @@
 
 <script lang="ts">
 //@ts-nocheck
-interface ErrorAlert {
+interface ErrorAlertPayload {
   title: string;
   text: string;
-  icon: string;
-  timer: number;
+  icon?: string;
+  timer?: number;
 }
 
 import Vue from "vue";
@@ -35,7 +35,7 @@ export default Vue.extend({
       });
       return toast;
     },
-    start(obj: ErrorAlert) {
+    start(obj: ErrorAlertPayload) {
       this.toastTop(obj.timer).fire({
         icon: this.icon,
         iconColor: this.iconColor,

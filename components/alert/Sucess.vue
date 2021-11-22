@@ -4,11 +4,11 @@
 
 <script lang="ts">
 //@ts-nocheck
-interface SuccessAlert {
+export interface SuccessAlertPayload {
   title: string
   text: string
-  icon: string
-  timer: number
+  icon?: string
+  timer?: number
 }
 
 import Vue from 'vue'
@@ -34,7 +34,7 @@ export default Vue.extend({
       })
       return toast
     },
-    start(obj: SuccessAlert) {
+    start(obj: SuccessAlertPayload) {
       this.toastTop(obj.timer).fire({
         icon: this.icon,
         title: obj.title,

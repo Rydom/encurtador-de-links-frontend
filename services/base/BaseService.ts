@@ -1,7 +1,7 @@
 import { NuxtAxiosInstance } from "@nuxtjs/axios";
 
 export class BaseService {
-  private readonly prefixUrl = '/api'
+  public readonly prefixUrl = '/api'
   constructor(private axios: NuxtAxiosInstance, private endpoint: string) {  }
 
   get(id: string) {
